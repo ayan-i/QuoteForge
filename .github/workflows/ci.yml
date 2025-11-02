@@ -1,0 +1,41 @@
+name: Build and Test QuoteForge
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build Frontend
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Node
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      # Step 3: Install dependencies
+      - name: Install frontend dependencies
+        run: |
+          cd frontend
+          npm install
+
+      # Step 4: Run build to verify everything compiles
+        continue-on-error: false
+        run: |
+          cd frontend
+          npm run build
+
+      # Step 5: Optional - Build backend too
+      - name: Install backend dependencies
+        run: |
+          cd backend
+          npm install
