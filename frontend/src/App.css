@@ -1,0 +1,186 @@
+/* === Base styles === */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background: linear-gradient(-45deg, #1e3a8a, #2563eb, #1e40af, #0f172a);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  color: #1f2937;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  text-align: center;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  padding: 1rem;
+}
+
+/* === Headings === */
+h1 {
+  font-size: 2.8rem;
+  color: #1d4ed8;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+h1::before {
+  content: "💬";
+}
+
+/* === Quote container === */
+.quote-container {
+  max-width: 650px;
+  margin: 30px auto;
+  padding: 20px 25px;
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.quote-text {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: inherit;
+  margin-bottom: 0.8rem;
+}
+
+.quote-author {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #6b7280;
+  margin-top: 0.5rem;
+}
+
+/* === Button === */
+.quote-btn {
+  background-color: #1d4ed8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 1rem;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.quote-btn:hover {
+  background-color: #2563eb;
+  transform: scale(1.05);
+}
+
+/* === Toggle theme button === */
+.toggle-theme {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  color: inherit;
+  padding: 6px 10px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+.light {
+  background: linear-gradient(-45deg, #f3f4f6, #e5e7eb, #f9fafb, #dbeafe);
+  background-size: 400% 400%;
+  animation: gradientShift 18s ease infinite;
+}
+
+.toggle-theme:hover {
+  transform: scale(1.08);
+}
+
+/* === Footer === */
+.footer {
+  position: absolute;
+  bottom: 15px;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+/* === Dark mode === */
+.dark {
+  background-color: #111827;
+  color: #f3f4f6;
+}
+
+.dark h1 {
+  color: #60a5fa;
+}
+
+.dark .quote-container {
+  background-color: rgba(31, 41, 55, 0.7);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.dark .quote-author {
+  color: #9ca3af;
+}
+
+.dark .quote-btn {
+  background-color: #2563eb;
+}
+
+.dark .quote-btn:hover {
+  background-color: #3b82f6;
+}
+
+.dark .toggle-theme {
+  background-color: rgba(31, 41, 55, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* === Animation === */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1.2s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* === Responsive design === */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  .quote-text {
+    font-size: 1.3rem;
+  }
+
+  .quote-author {
+    font-size: 1rem;
+  }
+
+  .toggle-theme {
+    font-size: 0.85rem;
+    top: 15px;
+    right: 15px;
+  }
+}
