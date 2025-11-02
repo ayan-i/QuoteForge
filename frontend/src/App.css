@@ -15,6 +15,11 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
 .app-container {
   display: flex;
@@ -43,7 +48,7 @@ h1::before {
 }
 
 /* === Quote container === */
-.quote-container {
+.quote-box, .quote-container {
   max-width: 650px;
   margin: 30px auto;
   padding: 20px 25px;
@@ -59,12 +64,32 @@ h1::before {
   font-weight: 500;
   color: inherit;
   margin-bottom: 0.8rem;
+  transition: opacity 0.5s ease;
 }
 
 .quote-author {
   font-size: 1.1rem;
   font-style: italic;
   color: #6b7280;
+  margin-top: 0.5rem;
+}
+
+/* === Loading & Error === */
+.loading {
+  font-size: 1.1rem;
+  color: #2563eb;
+  animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.error {
+  color: #ef4444;
+  font-weight: 500;
+  font-size: 1.1rem;
   margin-top: 0.5rem;
 }
 
@@ -102,14 +127,15 @@ h1::before {
   transition: all 0.3s ease;
   backdrop-filter: blur(4px);
 }
+
+.toggle-theme:hover {
+  transform: scale(1.08);
+}
+
 .light {
   background: linear-gradient(-45deg, #f3f4f6, #e5e7eb, #f9fafb, #dbeafe);
   background-size: 400% 400%;
   animation: gradientShift 18s ease infinite;
-}
-
-.toggle-theme:hover {
-  transform: scale(1.08);
 }
 
 /* === Footer === */
@@ -130,7 +156,7 @@ h1::before {
   color: #60a5fa;
 }
 
-.dark .quote-container {
+.dark .quote-container, .dark .quote-box {
   background-color: rgba(31, 41, 55, 0.7);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
@@ -152,7 +178,7 @@ h1::before {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* === Animation === */
+/* === Animations === */
 .fade-in {
   opacity: 0;
   animation: fadeIn 1.2s forwards;
