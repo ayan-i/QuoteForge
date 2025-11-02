@@ -12,7 +12,7 @@ function App() {
   const fetchQuote = async () => {
     try {
       setFade(false);
-      const res = await fetch("http://localhost:4000/api/quote");
+      const res = await fetch("https://quoteforge.onrender.com/api/quote");
       const data = await res.json();
       setQuote(data.quote);
       setTimeout(() => setFade(true), 100);
