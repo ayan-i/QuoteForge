@@ -11,21 +11,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 🧩 Checkout repository
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # ⚙️ Setup Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: 'npm'   # speeds up builds by caching node_modules
 
+      # 📦 Install and build frontend (Vite)
       - name: Install and build frontend
         working-directory: frontend
         run: |
-          npm install
+          echo "🔧 Installing frontend dependencies..."
+          npm install --legacy-peer-deps
+          echo "🧱 Rebuilding native modules (if any)..."
+          npm rebuild
+          echo "🚀 Building Vite app..."
           npm run build
 
+      # ⚙️ Install backend dependencies
       - name: Install backend dependencies
         working-directory: backend
         run: |
+          echo "🧩 Installing backend dependencies..."
           npm install
+
