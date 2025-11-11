@@ -38,6 +38,7 @@ It demonstrates modern full-stack practices, automated CI/CD, and cloud deployme
 | **Version Control** | Git & GitHub |
 | **CI/CD** | GitHub Actions |
 | **Deployment** | Render (Free Tier) |
+| **Infrastructure as Code** | Terraform (AWS demo configuration) |
 | **Language** | JavaScript (ES6+) |
 
 ---
